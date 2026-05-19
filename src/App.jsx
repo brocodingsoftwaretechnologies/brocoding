@@ -28,12 +28,6 @@ function App() {
     { icon: <Zap size={32} />, title: "Business Automation", description: "Intelligent process automation solutions designed to eliminate redundancies, reduce overhead, and exponentially boost productivity." }
   ];
 
-  const technologies = [
-    { category: "Frontend", items: ["React.js", "Next.js", "Tailwind CSS"] },
-    { category: "Backend", items: ["Node.js", "Express.js", "Python", "Java"] },
-    { category: "Database", items: ["MongoDB", "PostgreSQL", "MySQL"] },
-    { category: "Cloud & DevOps", items: ["AWS", "Docker", "GitHub", "Linux"] }
-  ];
 
   const projects = [
     { title: "Vehicle Accident System", desc: "An advanced, AI-driven real-time system engineered for precise accident detection and immediate emergency response.", img: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&q=80" },
@@ -67,7 +61,6 @@ function App() {
           <a href="#home" onClick={() => setMobileMenuOpen(false)}>Home</a>
           <a href="#about" onClick={() => setMobileMenuOpen(false)}>About</a>
           <a href="#services" onClick={() => setMobileMenuOpen(false)}>Services</a>
-          <a href="#technologies" onClick={() => setMobileMenuOpen(false)}>Technologies</a>
           <a href="#projects" onClick={() => setMobileMenuOpen(false)}>Projects</a>
           <a href="#contact" onClick={() => setMobileMenuOpen(false)}>Contact</a>
         </div>
@@ -157,28 +150,6 @@ function App() {
         </div>
       </section>
 
-      {/* Technologies Section */}
-      <section id="technologies" className="section-padding container">
-        <div className="section-title animate-fade-up">
-          <h2>Our <span className="gradient-text">Technology Stack</span></h2>
-          <p>We harness the power of modern, enterprise-grade technological stacks to engineer robust, future-proof digital solutions.</p>
-        </div>
-        <div style={{display: 'flex', flexDirection: 'column', gap: '3rem'}}>
-          {technologies.map((tech, index) => (
-            <div key={index} className="tech-category animate-fade-up" style={{animationDelay: `${index * 0.1}s`}}>
-              <h3>{tech.category}</h3>
-              <div className="tech-grid">
-                {tech.items.map((item, i) => (
-                  <div key={i} className="tech-card glass-card floating" style={{animationDelay: `${(index + i) * 0.5}s`}}>
-                    <Code2 size={20} color="#2563eb" />
-                    <span>{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* Projects Section */}
       <section id="projects" className="section-padding container" style={{background: 'rgba(255,255,255,0.3)'}}>
@@ -239,15 +210,16 @@ function App() {
           </div>
 
           <div className="contact-form-wrapper glass animate-fade-up" style={{animationDelay: '0.2s'}}>
-            <form className="contact-form" onSubmit={(e) => { e.preventDefault(); alert('Inquiry submitted successfully. Our team will contact you shortly.'); }}>
+            <form className="contact-form" action="https://api.web3forms.com/submit" method="POST">
+              <input type="hidden" name="access_key" value="f74144d5-ccda-417f-8206-c73108f69cff" />
               <div className="form-group">
-                <input type="text" placeholder="Corporate Name / Individual Name" required />
+                <input type="text" name="name" placeholder="Corporate Name / Individual Name" required />
               </div>
               <div className="form-group">
-                <input type="email" placeholder="Business Email Address" required />
+                <input type="email" name="email" placeholder="Business Email Address" required />
               </div>
               <div className="form-group">
-                <textarea placeholder="Detail your project requirements or technical inquiry..." required></textarea>
+                <textarea name="message" placeholder="Detail your project requirements or technical inquiry..." required></textarea>
               </div>
               <button type="submit" className="btn btn-primary" style={{width: '100%'}}>
                 Submit Inquiry <Send size={18} />
@@ -307,15 +279,6 @@ function App() {
               </ul>
             </div>
             
-            <div className="footer-links">
-              <h4>Technologies</h4>
-              <ul>
-                <li><a href="#technologies">React & Next.js</a></li>
-                <li><a href="#technologies">Node.js</a></li>
-                <li><a href="#technologies">Cloud AWS</a></li>
-                <li><a href="#technologies">Databases</a></li>
-              </ul>
-            </div>
           </div>
           
           <div className="footer-bottom">
